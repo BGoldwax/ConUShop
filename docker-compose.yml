@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  mariadb:
+    build: docker/mariadb
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+
+  laravel:
+    image: hitalos/laravel:latest
+    ports:
+        - 80:80
+    volumes:
+        - ./:/var/www
+    links:
+        - mariadb
+    environment:
+        - DB_HOST:mariadb
+        - DB_DATABASE:${DB_DATABASE}
+        - DB_USERNAME:${DB_USERNAME}
+        - DB_PASSWORD:${DB_PASSWORD}
+        - DB_CONNECTION:mysql
