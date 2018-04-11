@@ -94,3 +94,11 @@ Route::post('show-transaction-details', array(
 Route::post('return', array(
     'uses' => 'CustomerController@doReturnPurchase'
 ));
+use MongoDB\Client as Mongo;
+Route::get('mongo', function(Request $request) {
+    $collection = Mongo::get()->mydatabase->mycollection;
+    return $collection->find()->toArray();
+});
+Route::get('/', function () {
+    return view('welcome');
+});
