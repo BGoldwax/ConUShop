@@ -1,4 +1,4 @@
-package shadowJdbc;
+package shadows;
 
 import java.sql.*;
 
@@ -14,11 +14,11 @@ public class Driver {
 			Statement stat = con.createStatement();
 			
 			//query
-			ResultSet res = stat.executeQuery("select * from users");
+			ResultSet res = stat.executeQuery("select * from pma__users");
 			
 			//process result
 			while (res.next()){
-				System.out.println(res.getString("user"));
+				System.out.println(res.getString("pma__users"));
 			}
 		}
 		catch (Exception e){
