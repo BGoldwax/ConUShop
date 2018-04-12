@@ -8,7 +8,7 @@ public class Driver {
 		// TODO Auto-generated method stub
 		try {
 			//create connection to db
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/phpmyadmin", "admin", "isY2metT");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/phpmyadmin", "root", "isY2metT");
 			
 			//create statement
 			Statement stat = con.createStatement();
